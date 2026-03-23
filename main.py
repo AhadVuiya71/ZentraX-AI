@@ -108,3 +108,66 @@ portfolio_items = [
         <button style="background:linear-gradient(135deg, #00f2fe 0%, #4facfe 100%); border:none; border-radius:50%; width:40px; height:40px; color:white; cursor:pointer; font-size:20px; margin-left:10px;">➔</button>
     </div>
 </body>
+import os
+import threading
+from flask import Flask, render_template_string, request
+import time
+
+app = Flask(__name__)
+
+# ১. অল-ইন-ওয়ান ফ্রিল্যান্সিং গ্যালারি (পয়েন্ট ১)
+portfolio_items = [
+    {"title": "AI Logo Design", "url": "https://i.ibb.co/example1.jpg"},
+    {"title": "Freelance Dashboard", "url": "https://i.ibb.co/example2.jpg"}
+]
+
+@app.route('/')
+def home():
+    img_tags = "".join([f'<div style="margin:10px; display:inline-block; border:1px solid #00ff88; padding:10px; border-radius:10px; background:rgba(0,0,0,0.5);"><img src="{item["url"]}" width="120" style="border-radius:5px;"><p style="font-size:10px;">{item["title"]}</p></div>' for item in portfolio_items])
+    
+    return f"""
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ZentraX Super-App Vision</title>
+        <style>
+            body {{ background:#050a14; color:#00ff88; font-family: 'Courier New', monospace; margin:0; padding:20px; text-align:center; }}
+            .status-bar {{ background:#112240; padding:5px; font-size:12px; border-bottom:1px solid #00ff88; margin-bottom:20px; }}
+            .terminal {{ background:black; border:1px solid #00ff88; padding:20px; height:200px; overflow-y:auto; text-align:left; border-radius:10px; box-shadow: 0 0 20px rgba(0,255,136,0.2); }}
+            .input-box {{ position:fixed; bottom:20px; left:50%; transform:translateX(-50%); width:90%; max-width:600px; display:flex; background:#0a192f; border-radius:30px; padding:10px 20px; border:1px solid #00ff88; }}
+            input {{ flex:1; background:none; border:none; color:#00ff88; outline:none; }}
+            .alert {{ color:#ff0000; font-weight:bold; animation: blink 1s infinite; }}
+            @keyframes blink {{ 0% {{ opacity:1; }} 50% {{ opacity:0; }} 100% {{ opacity:1; }} }}
+        </style>
+    </head>
+    <body>
+        <div class="status-bar">SYSTEM STATUS: ENCRYPTED | DATA SOVEREIGNTY: ACTIVE | HACKER TRACKING: ON</div>
+        
+        <h1 style="letter-spacing:5px;">ZENTRAX SUPER-AI</h1>
+        <p style="color:#8892b0;">The Future of Freelancing & Security</p>
+
+        <div style="margin-bottom:20px;">
+            <h3>Digital Workspace</h3>
+            <div style="overflow-x:auto; white-space:nowrap;">{img_tags}</div>
+        </div>
+
+        <div class="terminal">
+            <p>> [INFO] Universal Freelance Engine Loading...</p>
+            <p>> [SECURITY] Zero-Knowledge Proof Active.</p>
+            <p>> [MONITOR] Watching for unauthorized access...</p>
+            <p class="alert" id="tracker">> NO INTRUSION DETECTED</p>
+        </div>
+
+        <div class="input-box">
+            <input type="text" placeholder="Tell ZentraX what to do...">
+            <button style="background:none; border:none; color:#00ff88; font-size:20px; cursor:pointer;">➔</button>
+        </div>
+    </body>
+    </html>
+    """
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)

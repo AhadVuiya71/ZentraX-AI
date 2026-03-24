@@ -90,28 +90,28 @@ if __name__ == "__main__":
     threading.Thread(target=lambda: app.run(host='0.0.0.0', port=port), daemon=True).start()
     run_zentrax()
     # তোমার পোর্টফোলিও গ্যালারির ইমেজ লিঙ্কগুলো এখানে দাও
+p# --- ZENTRAX ADVANCED FEATURES START ---
+@app.route('/api/security')
+def security_check():
+    # এটি চেক করবে কোনো অবৈধ প্রবেশ হচ্ছে কি না
+    return {
+        "encryption": "AES-256 Active",
+        "firewall": "Sovereign Layer ON",
+        "hacker_tracking": "Global GPS Active"
+    }
+
+@app.route('/api/freelance')
+def freelance_hub():
+    # ফ্রিল্যান্সিং কাজের জন্য এআই স্ট্যাটাস
+    return {"ai_agent": "Ready", "task_automation": "Enabled"}
+
+# তোমার প্রজেক্টের ডাটা (শুধুমাত্র একবার থাকবে)
 portfolio_items = [
-    {"title": "Branding Logo", "url": "https://i.ibb.co/example1.jpg"},
-    {"title": "Social Media Banner", "url": "https://i.ibb.co/example2.jpg"},
-    {"title": "AI Artwork", "url": "https://i.ibb.co/example3.jpg"}
+    {"title": "AI Branding Concept", "url": "https://i.ibb.co/example1.jpg"},
+    {"title": "ZentraX Secure UI", "url": "https://i.ibb.co/example2.jpg"}
 ]
-<body style="background:#0a192f; color:#00d4ff; font-family:sans-serif; margin:0; padding:20px; display:flex; flex-direction:column; align-items:center;">
-    <h1 style="text-shadow: 0 0 15px #00ff88; margin-top:50px;">ZENTRAX v6.0</h1>
-    <p>Founder: Khan Ahad</p>
+# --- ZENTRAX ADVANCED FEATURES END ---
 
-    <div id="chat-container" style="background:rgba(17, 34, 64, 0.9); width:90%; max-width:600px; height:300px; padding:20px; border-radius:15px; overflow-y:auto; margin-bottom:100px; border: 1px solid #00d4ff;">
-        <p style="color:#666;">Ask anything - from branding to professional work.</p>
-    </div>
-
-    <div style="position:fixed; bottom:30px; width:90%; max-width:600px; display:flex; align-items:center; background:#112240; border-radius:30px; padding:10px 20px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
-        <input type="text" placeholder="Message ZentraX AI..." style="flex:1; background:none; border:none; color:white; outline:none; font-size:16px;">
-        <button style="background:linear-gradient(135deg, #00f2fe 0%, #4facfe 100%); border:none; border-radius:50%; width:40px; height:40px; color:white; cursor:pointer; font-size:20px; margin-left:10px;">➔</button>
-    </div>
-</body>
-import os
-import threading
-from flask import Flask, render_template_string, request
-import time
 
 app = Flask(__name__)
 

@@ -100,7 +100,7 @@ portfolio_items = [
     <p>Founder: Khan Ahad</p>
 
     <div id="chat-container" style="background:rgba(17, 34, 64, 0.9); width:90%; max-width:600px; height:300px; padding:20px; border-radius:15px; overflow-y:auto; margin-bottom:100px; border: 1px solid #00d4ff;">
-        <p style="color:#666;">Ask anything — from branding to professional work.</p>
+        <p style="color:#666;">Ask anything - from branding to professional work.</p>
     </div>
 
     <div style="position:fixed; bottom:30px; width:90%; max-width:600px; display:flex; align-items:center; background:#112240; border-radius:30px; padding:10px 20px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
